@@ -8,7 +8,11 @@ function CatalogItems({
   catalog: Catalog;
   load: (item: Item) => void;
 }) {
-  return (
+  return catalog.items.length === 0 ? (
+    <div class="catalog_empty">
+      <p>you haven't saved anything yet</p>
+    </div>
+  ) : (
     <div class="catalog__items">
       {catalog.items.map((item: Item) => (
         <div class="catalog__item">
@@ -21,14 +25,33 @@ function CatalogItems({
 
 export default function CatalogView({
   catalog,
-  load
+  load,
+  reload,
+  setScope
 }: {
   catalog: Catalog;
   load: (item: Item) => void;
+  reload: (state: Catalog, actions: CatalogActions) => void;
+  setScope: (scope: string) => void;
 }) {
   return (
     <aside class="catalog">
-      <h2 class="catalog__headline">Your Saved Artworks</h2>
+      <h2 class="catalog__headline">
+        {catalog.scope === "mine"
+          ? [
+              <span>your artworks</span>,
+              <button onclick={() => setScope("all")}>
+                show everyones artwork
+              </button>
+            ]
+          : [
+              <span>all artwork</span>,
+              <button onclick={() => setScope("mine")}>
+                only your artworks
+              </button>,
+              <button onclick={reload}>reload</button>
+            ]}
+      </h2>
       <CatalogItems catalog={catalog} load={load} />
     </aside>
   );

@@ -57,7 +57,7 @@ const saveCurrentItem = (item: Item): void => {
 
 export const initialState: State = {
   animation: { running: false, speed: 500 },
-  catalog: { items: [] },
+  catalog: { items: [], scope: "mine" },
   currentItem: itemFromString(window.localStorage.currentItem || EMPTY_MATRIX),
   inspiration: ""
 };
@@ -86,8 +86,8 @@ export const actions: Actions = {
     }
   },
   catalog: {
-    reload: () => (_, actions) => {
-      window.store.loadItems().then(actions.setItems);
+    reload: () => (catalog, actions) => {
+      window.store.loadItems(catalog.scope).then(actions.setItems);
     },
     remove: () => state => {
       const catalog = cloneCatalog(state);
@@ -103,6 +103,10 @@ export const actions: Actions = {
     },
     setItems: (items: Item[]) => () => {
       return { items };
+    },
+    setScope: (scope: string) => (_, actions) => {
+      setTimeout(actions.reload, 0);
+      return { scope };
     }
   },
   currentItem: {
@@ -245,7 +249,12 @@ export const view = (
           />
         </div>
         <div class="column">
-          <CatalogView catalog={catalog} load={currentItemActions.load} />
+          <CatalogView
+            catalog={catalog}
+            reload={catalogActions.reload}
+            load={currentItemActions.load}
+            setScope={catalogActions.setScope}
+          />
         </div>
       </div>
     </main>

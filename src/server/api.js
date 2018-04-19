@@ -21,7 +21,8 @@ function isValidItem(item) {
 }
 
 router.get("/images", (req, res) => {
-  images.all((err, data) => {
+  const { author } = req.query;
+  images.all(author, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {

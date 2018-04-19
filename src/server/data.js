@@ -6,11 +6,19 @@ const connection = mysql.createConnection(config.mysql);
 
 connection.connect();
 
-function all(cb) {
-  connection.query(
-    "SELECT * FROM images ORDER BY updated_at DESC",
-    (err, result) => cb(err, listFromDB(result))
-  );
+function all(author, cb) {
+  if (author) {
+    connection.query(
+      "SELECT * FROM images WHERE author=? ORDER BY updated_at DESC LIMIT 1000",
+      [author],
+      (err, result) => cb(err, listFromDB(result))
+    );
+  } else {
+    connection.query(
+      "SELECT * FROM images ORDER BY updated_at DESC LIMIT 1000",
+      (err, result) => cb(err, listFromDB(result))
+    );
+  }
 }
 
 function create(item, cb) {

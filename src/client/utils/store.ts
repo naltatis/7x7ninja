@@ -29,8 +29,10 @@ export function saveItem(frames: string) {
   });
 }
 
-export function loadItems() {
-  return fetch("/api/images", {
+export function loadItems(scope) {
+  const condition =
+    scope === "all" ? "" : `?author=${encodeURIComponent(sessionId())}`;
+  return fetch(`/api/images${condition}`, {
     headers,
     method: "GET"
   })

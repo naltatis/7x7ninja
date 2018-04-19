@@ -14,10 +14,12 @@ declare global {
 }
 
 window.renderFlipDot = (item: Item) => {
+  /*
   const frame = item.frames[item.currentFrame];
   fetch(
     `http://katatonie.local/api/display/${frame.join(BIT_SEPARATOR)}?clear=true`
   );
+  */
 };
 
 window.store = { saveItem, loadItems };

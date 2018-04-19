@@ -23,6 +23,7 @@ interface Animation {
 
 interface Catalog {
   items: Item[];
+  scope: string;
 }
 
 interface State {
@@ -40,10 +41,13 @@ interface AnimationActions {
 }
 
 interface CatalogActions {
-  setItems: (items: Item[]) => (state: Catalog) => Catalog;
+  setItems: (items: Item[]) => (state: Catalog) => { items: Item[] };
   reload: () => (state: Catalog, actions: CatalogActions) => void;
   save: (item: Item) => (state: Catalog, actions: CatalogActions) => void;
-  remove: (index: number) => (state: Catalog) => Catalog;
+  remove: (index: number) => (state: Catalog) => { items: Item[] };
+  setScope: (
+    scope: string
+  ) => (state: Catalog, actions: CatalogActions) => { scope: string };
 }
 
 interface CurrentItemActions {

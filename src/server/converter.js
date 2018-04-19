@@ -1,6 +1,6 @@
 const Hashids = require("hashids");
 
-const hashids = new Hashids("7x7", 5);
+const hashids = new Hashids("7x7", 8);
 
 const FRAME_SEPARATOR = "-";
 
@@ -12,11 +12,10 @@ function itemForDB(item) {
 }
 
 function itemFromDB(item) {
-  const { author } = item;
   const id = hashids.encode(item.id);
   const frames = item.pixel.split(FRAME_SEPARATOR);
   const animation = frames.length > 1;
-  return { id, author, frames, animation };
+  return { id, frames, animation };
 }
 
 function listFromDB(list = []) {
