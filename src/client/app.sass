@@ -1,0 +1,200 @@
+@import "bulma/sass/utilities/_all"
+@import "bulma/sass/elements/container"
+@import "bulma/sass/elements/button"
+@import "bulma/sass/elements/form"
+@import "bulma/sass/grid/columns"
+
+*
+  box-sizing: border-box
+
+body
+  background-color: white
+  font-family: "Menlo", "Monaco", "Source Code Pro", monospace
+  font-size: 16px
+  margin: 0
+  padding: 0
+
+select, button
+  touch-action: manipulation
+
+kbd
+  color: darkred
+  font-weight: bold
+  &::before
+    content: "["
+  &::after
+    content: "]"
+  +touch
+    display: none
+
+#title
+  background: black
+  color: white
+  letter-spacing: 0.1em
+  margin: 0
+  padding: .25em .5em
+
+#app > .container > .columns
+  margin: 0
+
+.currentItem
+  padding-top: 100%
+  position: relative
+  width: 100%
+
+.currentItem__square
+  bottom: 0
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
+
+.currentItem__inner
+  background-color: black
+  display: grid
+  grid-gap: 5px
+  grid-template-columns: repeat(7, 1fr)
+  grid-template-rows: repeat(7, 1fr)
+  height: 100%
+  padding: 5px
+
+@media (max-width: 999px)
+  .currentItem__inner
+    grid-gap: 2px
+    padding: 2px
+
+.dot
+  background: none
+  border: none
+  outline: none
+  position: relative
+  touch-action: manipulation
+  transform: rotateZ(45deg)
+
+.disc
+  bottom: 0
+  display: block
+  height: 100%
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
+  transform-style: preserve-3d
+  transition: transform 0.35s cubic-bezier(0.7, 0.62, 0.59, 1.53)
+
+.dot--on .disc
+  transform: rotateY(180deg)
+
+.disc__white, .disc__black
+  -webkit-backface-visibility: hidden
+  backface-visibility: hidden
+  border-radius: 50%
+  height: 100%
+  left: 0
+  position: absolute
+  top: 0
+  width: 100%
+
+.disc__white
+  background-color: white
+  transform: rotateY(-180deg)
+
+.disc__black
+  background-color: #333333
+  z-index: 2
+
+.dot:focus
+  .disc__white, .disc__black
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.66)
+
+.editor__headline
+  display: flex
+  justify-content: space-between
+.editor__inspiration
+  font-size: 1em
+  cursor: pointer
+  font-family: Arial, sans-serif
+.editor__getinspiration
+  font-size: 0.5em
+  font-weight: normal
+  text-decoration: gray dashed underline;
+  display: block
+  border: none
+  background: none
+  text-align: right
+  cursor: pointer
+
+.editor__actions
+  margin-top: .33em
+  .column .button
+    width: 100%
+
+.strip
+  align-items: center
+  display: flex
+  flex-wrap: wrap
+  list-style-type: none
+  margin: 5px 0
+  padding: 0
+
+.strip__item
+  border-bottom: 3px solid white
+  border-top: 3px solid white
+  margin: 0 10px 5px 0
+  padding: 0
+  position: relative
+
+.strip__item__add
+  display: none
+  position: absolute
+  top: -10px
+  right: -10px
+  z-index: 1
+
+
+.strip__item--active
+  border-color: red
+  transition: border-color 0.3s ease-in
+
+.catalog, .animation
+  overflow: auto
+
+.animation__control
+  display: block
+  margin-top: 1em
+
+.catalog__item
+  display: inline-block
+  margin: 0 5px 5px 0
+
+.frame
+  position: relative
+
+.frame__matrix
+  background-color: black
+  display: grid
+  grid-gap: 1px
+  grid-template-columns: repeat(7, 1fr)
+  grid-template-rows: repeat(7, 1fr)
+  height: 50px
+  list-style-type: none
+  margin: 0
+  padding: 1px
+  touch-action: manipulation
+  width: 50px
+
+.frame__pixel--on
+  background-color: white
+  border-radius: 50%
+
+.frame__remove
+  border: none
+  opacity: 0
+  padding: 0 0 3px 3px
+  position: absolute
+  right: 0
+  top: 0
+
+.strip__item--active .frame__remove,
+.frame:hover .frame__remove
+  opacity: 1
