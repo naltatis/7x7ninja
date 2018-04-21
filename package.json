@@ -8,6 +8,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "bulma": "^0.6.2",
+    "cross-env": "^5.1.4",
     "express": "^4.16.3",
     "hashids": "^1.1.4",
     "hyperapp": "^1.2.5",
@@ -36,6 +37,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "parcel watch src/client/index.html -d public --public-url /",
     "build": "parcel build src/client/index.html -d public --public-url /",
-    "start": "nodemon ./src/server/index.js"
+    "start": "nodemon ./src/server/index.js",
+    "start:prod": "cross-env NODE_ENV=production node ./src/server/index.js"
   }
 }
