@@ -78,7 +78,7 @@ export default function EditorView({
         </div>
         <div class="column">
           <button onclick={handleNew} class="button">
-            clear <kbd>N</kbd>
+            clear <kbd>C</kbd>
           </button>
         </div>
       </div>
