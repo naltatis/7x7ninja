@@ -114,7 +114,8 @@ export const actions: Actions = {
       const item = cloneItem(state);
       const newMatrix = cloneMatrix(item.frames[item.currentFrame]);
 
-      const i = index === undefined ? item.frames.length - 1 : index + 1;
+      const i = index === undefined ? item.frames.length : index + 1;
+
       item.frames.splice(i, 0, newMatrix);
       item.currentFrame = i;
       item.animation = true;

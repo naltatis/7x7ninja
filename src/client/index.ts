@@ -5,6 +5,11 @@ import animationRunner from "./utils/animationRunner";
 import keyboadShortcuts from "./utils/keyboadShortcuts";
 import { loadItems, saveItem } from "./utils/store";
 
+const devtools =
+  process.env.NODE_ENV !== "production"
+    ? require("hyperapp-redux-devtools")
+    : null;
+
 declare global {
   interface Window {
     animationRunner: any;
@@ -24,7 +29,14 @@ window.renderFlipDot = (item: Item) => {
 
 window.store = { saveItem, loadItems };
 
-const main = app(initialState, actions, view, document.getElementById("app"));
+const devApp = devtools ? devtools(app) : app;
+
+const main = devApp(
+  initialState,
+  actions,
+  view,
+  document.getElementById("app")
+);
 
 window.addEventListener("keyup", keyboadShortcuts(main as Actions));
 

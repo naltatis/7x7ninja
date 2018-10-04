@@ -11,7 +11,10 @@ export function cloneItem(item: Item): Item {
 }
 
 export function cloneCatalog(catalog: Catalog): Catalog {
-  return { items: catalog.items.map(item => cloneItem(item)) };
+  return {
+    items: catalog.items.map(item => cloneItem(item)),
+    scope: catalog.scope
+  };
 }
 
 export function cloneAnimation(animation: Animation): Animation {

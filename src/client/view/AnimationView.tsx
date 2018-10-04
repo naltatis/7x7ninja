@@ -30,7 +30,8 @@ function AnimationControl({
         <select onchange={handleChange} disabled={running}>
           {speeds.map(ms => (
             <option value={ms} selected={ms === speed}>
-              {ms}ms
+              {ms}
+              ms
             </option>
           ))}
         </select>
@@ -84,7 +85,10 @@ export default function AnimationView({
             </button>
           ]}
       <div>
-        <button class="button" onclick={currentItemActions.addFrame}>
+        <button
+          class="button"
+          onclick={() => currentItemActions.addFrame(undefined)}
+        >
           add frame <kbd>+</kbd>
         </button>
         {currentItem.animation &&
