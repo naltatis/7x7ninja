@@ -259,6 +259,16 @@ export const view = (
             />
           </div>
         </div>
+        <p class="column has-text-centered">
+          <small>
+            <a
+              class="has-text-grey "
+              href="https://github.com/naltatis/7x7ninja"
+            >
+              visit the GitHub project
+            </a>
+          </small>
+        </p>
       </main>
     </div>
   );
