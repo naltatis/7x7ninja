@@ -27,9 +27,9 @@ interface Catalog {
 }
 
 interface State {
+  animation: Animation;
   currentItem: Item;
   inspiration: string;
-  animation: Animation;
   catalog: Catalog;
 }
 

@@ -53,7 +53,7 @@ export default function AnimationView({
 }) {
   return (
     <div class="animation">
-      <h2 class="animation__headline">Animation Frames </h2>
+      <h2 class="animation__headline">Create Animation</h2>
       {!currentItem.animation
         ? null
         : [

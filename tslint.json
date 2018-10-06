@@ -5,7 +5,11 @@
   "rules": {
     "interface-name": false,
     "no-shadowed-variable": false,
-    "no-var-requires": false
+    "no-var-requires": false,
+    "no-bitwise": false
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["public/*.js"]
+  }
 }

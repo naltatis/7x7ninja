@@ -39,13 +39,13 @@ export default function CatalogView({
       <h2 class="catalog__headline">
         {catalog.scope === "mine"
           ? [
-              <span>your artworks</span>,
+              <span>Your Artworks</span>,
               <button onclick={() => setScope("all")}>
                 show everyones artwork
               </button>
             ]
           : [
-              <span>all artwork</span>,
+              <span>All Artwork</span>,
               <button onclick={() => setScope("mine")}>
                 only your artworks
               </button>,

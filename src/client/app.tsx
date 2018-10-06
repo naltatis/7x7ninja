@@ -229,35 +229,37 @@ export const view = (
   }: Actions
 ) => {
   return (
-    <main class="container">
-      <h1 id="title">7x7 NINJA</h1>
-      <div class="columns is-tablet is-multiline">
-        <div class="column is-half">
-          <EditorView
-            catalogActions={catalogActions}
-            currentItem={currentItem}
-            inspiration={inspiration}
-            currentItemActions={currentItemActions}
-            inspirationAction={inspirationAction}
-          />
+    <div>
+      <h1 id="title">7x7.ninja</h1>
+      <main class="container">
+        <div class="columns is-tablet is-multiline">
+          <div class="column is-half">
+            <EditorView
+              catalogActions={catalogActions}
+              currentItem={currentItem}
+              inspiration={inspiration}
+              currentItemActions={currentItemActions}
+              inspirationAction={inspirationAction}
+            />
+          </div>
+          <div class="column is-half">
+            <AnimationView
+              animation={animation}
+              animationActions={animationActions}
+              currentItem={currentItem}
+              currentItemActions={currentItemActions}
+            />
+          </div>
+          <div class="column">
+            <CatalogView
+              catalog={catalog}
+              reload={catalogActions.reload}
+              load={currentItemActions.load}
+              setScope={catalogActions.setScope}
+            />
+          </div>
         </div>
-        <div class="column is-half">
-          <AnimationView
-            animation={animation}
-            animationActions={animationActions}
-            currentItem={currentItem}
-            currentItemActions={currentItemActions}
-          />
-        </div>
-        <div class="column">
-          <CatalogView
-            catalog={catalog}
-            reload={catalogActions.reload}
-            load={currentItemActions.load}
-            setScope={catalogActions.setScope}
-          />
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 };

@@ -1,3 +1,4 @@
+/* globals process, require */
 import { app } from "hyperapp";
 import { actions, initialState, view } from "./app";
 import { BIT_SEPARATOR, FRAME_MATCHER } from "./constants";

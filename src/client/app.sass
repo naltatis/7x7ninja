@@ -4,12 +4,25 @@
 @import "bulma/sass/elements/form"
 @import "bulma/sass/grid/columns"
 
+@font-face
+    font-family: 'bpdotsregular'
+    src: url('font/bpdots-webfont.woff2') format('woff2'), url('font/bpdots-webfont.woff') format('woff')
+    font-weight: normal
+    font-style: normal
+
+@font-face
+    font-family: 'bpdotssquaresbold'
+    src: url('font/bpdotssquarebold-webfont.woff2') format('woff2'), url('font/bpdotssquarebold-webfont.woff') format('woff')
+    font-weight: normal
+    font-style: normal
+
 *
   box-sizing: border-box
+  font-family: bpdotssquaresbold, Menlo, Monaco, monospace
+
 
 body
   background-color: white
-  font-family: "Menlo", "Monaco", "Source Code Pro", monospace
   font-size: 16px
   margin: 0
   padding: 0
@@ -28,13 +41,25 @@ kbd
     display: none
 
 #title
-  background: black
+  background: #C02942
   color: white
   letter-spacing: 0.1em
   margin: 0
-  padding: .25em .5em
+  border-top: 10px solid white;
+  text-align: center
+  line-height: 1.3em
+  font-size: 3em
+  transform: rotateZ(-0.75deg)
+  box-shadow: 2px 2px 1px black
 
-#app > .container > .columns
+  @media (max-width: 999px)
+    font-size: 2em
+
+  @media (max-width: 768px)
+    transform: rotateZ(-2deg) scaleX(1.1)
+
+
+main.container > .columns
   margin: 0
 
 .currentItem
@@ -48,6 +73,7 @@ kbd
   position: absolute
   right: 0
   top: 0
+  touch-action: manipulation
 
 .currentItem__inner
   background-color: black
@@ -68,7 +94,7 @@ kbd
   border: none
   outline: none
   position: relative
-  touch-action: manipulation
+  user-select: none
   transform: rotateZ(45deg)
 
 .disc
@@ -79,6 +105,7 @@ kbd
   position: absolute
   right: 0
   top: 0
+  user-select: none
   transform-style: preserve-3d
   transition: transform 0.35s cubic-bezier(0.7, 0.62, 0.59, 1.53)
 
@@ -94,6 +121,7 @@ kbd
   position: absolute
   top: 0
   width: 100%
+  user-select: none
 
 .disc__white
   background-color: white
@@ -113,7 +141,6 @@ kbd
 .editor__inspiration
   font-size: 1em
   cursor: pointer
-  font-family: Arial, sans-serif
 .editor__getinspiration
   font-size: 0.5em
   font-weight: normal
