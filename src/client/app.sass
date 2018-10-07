@@ -26,10 +26,7 @@ body
   background-color: #e6e6e6
   font-size: 16px
   margin: 0
-  overflow-x: hidden
-  padding: 2em 0 0
-  @media (max-width: 768px)
-    padding: 4em 0 0
+  padding: 0
 
 select, button
   touch-action: manipulation
@@ -43,6 +40,13 @@ kbd
     content: "]"
   +touch
     display: none
+
+#app
+  position: relative
+  overflow: hidden
+  padding: 2em 0 0
+  @media (max-width: 768px)
+    padding: 4em 0 0
 
 #title
   background: #C02942

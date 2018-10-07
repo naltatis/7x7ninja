@@ -9,6 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use("/api", api);
+app.use("/assets", express.static("./assets"));
 app.use("/", express.static("./public"));
 
 const port = config.port || 3000;
