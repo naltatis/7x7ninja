@@ -15,6 +15,9 @@ function CurrentItemView({
             <button
               class={`dot dot--${x === 0 ? "off" : "on"}`}
               onclick={() => toggle(i)}
+              aria-label={`Pixel ${Math.floor(i / 7) + 1},${i -
+                Math.floor(i / 7) * 7 +
+                1}`}
             >
               <div class="disc">
                 <div class="disc__white" />
@@ -58,7 +61,9 @@ export default function EditorView({
           {inspiration}
         </div>
         <button class="editor__getinspiration" onclick={inspirationAction}>
-          need drawing<br />inspiration?
+          need drawing
+          <br />
+          inspiration?
         </button>
       </h2>
       <CurrentItemView
