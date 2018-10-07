@@ -2,9 +2,30 @@ const mysql = require("mysql");
 const config = require("../../config.json");
 const { listFromDB, itemForDB } = require("./converter");
 
-const connection = mysql.createConnection(config.mysql);
+let connection = null;
 
-connection.connect();
+function handleDisconnect() {
+  connection = mysql.createConnection(config.mysql);
+
+  connection.connect(function(err) {
+    if (err) {
+      // tslint:disable-next-line no-console
+      console.log("error when connecting to db:", err);
+      setTimeout(handleDisconnect, 2000);
+    }
+  });
+  connection.on("error", function(err) {
+    // tslint:disable-next-line no-console
+    console.log("db error", err);
+    if (err.code === "PROTOCOL_CONNECTION_LOST") {
+      handleDisconnect();
+    } else {
+      throw err;
+    }
+  });
+}
+
+handleDisconnect();
 
 function all(author, cb) {
   if (author) {
