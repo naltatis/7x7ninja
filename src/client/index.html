@@ -19,6 +19,20 @@
 
 <body>
   <div id="app"></div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        var path = "/service-worker.js";
+        navigator.serviceWorker.register(path).then(function (registration) {
+          // Registration was successful
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+          // registration failed :(
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
   <script src="./index.ts" async></script>
 </body>
 
